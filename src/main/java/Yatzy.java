@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -55,8 +54,7 @@ public class Yatzy {
         return (int) rolls.stream().filter(roll -> roll.equals(number)).mapToLong(roll -> roll).sum();
     }
 
-    public static int score_pair(int d1, int d2, int d3, int d4, int d5) {
-        List<Integer> rolls = asList(d1, d2, d3, d4, d5);
+    public int score_pair() {
 
         List<Integer> highestPair = getHighestPair(rolls);
 
