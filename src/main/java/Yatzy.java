@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -29,17 +31,13 @@ public class Yatzy {
         return getSumOf(rolls, 1);
     }
 
-    public static int twos(List<Integer> rolls) {
+    public int twos() {
         return getSumOf(rolls, 2);
     }
 
-    public static int threes(int d1, int d2, int d3, int d4, int d5) {
-        List<Integer> rolls = asList(d1, d2, d3, d4, d5);
-
+    public int threes() {
         return getSumOf(rolls, 3);
     }
-
-    protected int[] dice;
 
     public int fours() {
         return getSumOf(rolls, 4);
@@ -58,17 +56,23 @@ public class Yatzy {
     }
 
     public static int score_pair(int d1, int d2, int d3, int d4, int d5) {
-        int[] counts = new int[6];
-        counts[d1 - 1]++;
-        counts[d2 - 1]++;
-        counts[d3 - 1]++;
-        counts[d4 - 1]++;
-        counts[d5 - 1]++;
-        int at;
-        for (at = 0; at != 6; at++)
-            if (counts[6 - at - 1] >= 2)
-                return (6 - at) * 2;
-        return 0;
+        List<Integer> rolls = asList(d1, d2, d3, d4, d5);
+
+        List<Integer> highestPair = getHighestPair(rolls);
+
+        return highestPair.stream().mapToInt(number -> number).sum();
+    }
+
+    private static List<Integer> getHighestPair(List<Integer> rolls) {
+
+        rolls.sort(Collections.reverseOrder());
+
+        for (int i = 0; i < rolls.size(); i++) {
+            if (rolls.get(i).equals(rolls.get(i + 1))) {
+                return asList(rolls.get(i), rolls.get(i + 1));
+            }
+        }
+        return Collections.emptyList();
     }
 
     public static int two_pair(int d1, int d2, int d3, int d4, int d5) {

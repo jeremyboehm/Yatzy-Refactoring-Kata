@@ -32,14 +32,14 @@ public class YatzyTest {
 
     @Test
     public void test_2s() {
-        assertEquals(4, Yatzy.twos(asList(1, 2, 3, 2, 6)));
-        assertEquals(10, Yatzy.twos(asList(2, 2, 2, 2, 2)));
+        assertEquals(4, new Yatzy(asList(1, 2, 3, 2, 6)).twos());
+        assertEquals(10, new Yatzy(asList(2, 2, 2, 2, 2)).twos());
     }
 
     @Test
     public void test_threes() {
-        assertEquals(6, Yatzy.threes(1, 2, 3, 2, 3));
-        assertEquals(12, Yatzy.threes(2, 3, 3, 3, 3));
+        assertEquals(6, new Yatzy(asList(1, 2, 3, 2, 3)).threes());
+        assertEquals(12, new Yatzy(asList(2, 3, 3, 3, 3)).threes());
     }
 
     @Test
