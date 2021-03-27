@@ -19,11 +19,15 @@ public class Yatzy {
     }
 
     public static int ones(List<Integer> rolls) {
-        return (int) rolls.stream().filter(roll -> roll.equals(1)).mapToLong(roll -> roll).sum();
+        return getSumOf(rolls, 1);
     }
 
     public static int twos(List<Integer> rolls) {
-        return (int) rolls.stream().filter(roll -> roll.equals(2)).mapToLong(roll -> roll).sum();
+        return getSumOf(rolls, 2);
+    }
+
+    private static int getSumOf(List<Integer> rolls, int number) {
+        return (int) rolls.stream().filter(roll -> roll.equals(number)).mapToLong(roll -> roll).sum();
     }
 
     public static int threes(int d1, int d2, int d3, int d4, int d5) {
