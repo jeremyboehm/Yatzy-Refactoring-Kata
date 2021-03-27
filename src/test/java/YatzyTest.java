@@ -13,9 +13,12 @@ public class YatzyTest {
         assertEquals(16, Yatzy.chance(asList(3,3,4,5,1)));
     }
 
-    @Test public void yatzy_scores_50() {
+    @Test public void yatzy_scores_50_when_all_dices_numbers_are_the_same() {
         assertEquals(50, Yatzy.yatzy(asList(4,4,4,4,4)));
         assertEquals(50, Yatzy.yatzy(asList(6,6,6,6,6)));
+    }
+
+    @Test public void yatzy_scores_0_when_there_is_a_difference_into_dices_numbers() {
         assertEquals(0, Yatzy.yatzy(asList(6,6,6,6,3)));
     }
 
