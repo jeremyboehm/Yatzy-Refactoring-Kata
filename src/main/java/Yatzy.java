@@ -1,7 +1,14 @@
-import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.asList;
+
 public class Yatzy {
+
+    private List<Integer> rolls;
+
+    public Yatzy(List<Integer> rolls) {
+        this.rolls = rolls;
+    }
 
     public static int chance(List<Integer> rolls) {
         return rolls.stream().mapToInt(roll -> roll).sum();
@@ -26,58 +33,28 @@ public class Yatzy {
         return getSumOf(rolls, 2);
     }
 
-    private static int getSumOf(List<Integer> rolls, int number) {
-        return (int) rolls.stream().filter(roll -> roll.equals(number)).mapToLong(roll -> roll).sum();
-    }
-
     public static int threes(int d1, int d2, int d3, int d4, int d5) {
-        int s;
-        s = 0;
-        if (d1 == 3) s += 3;
-        if (d2 == 3) s += 3;
-        if (d3 == 3) s += 3;
-        if (d4 == 3) s += 3;
-        if (d5 == 3) s += 3;
-        return s;
+        List<Integer> rolls = asList(d1, d2, d3, d4, d5);
+
+        return getSumOf(rolls, 3);
     }
 
     protected int[] dice;
 
-    public Yatzy(int d1, int d2, int d3, int d4, int _5) {
-        dice = new int[5];
-        dice[0] = d1;
-        dice[1] = d2;
-        dice[2] = d3;
-        dice[3] = d4;
-        dice[4] = _5;
-    }
-
     public int fours() {
-        int sum;
-        sum = 0;
-        for (int at = 0; at != 5; at++) {
-            if (dice[at] == 4) {
-                sum += 4;
-            }
-        }
-        return sum;
+        return getSumOf(rolls, 4);
     }
 
     public int fives() {
-        int s = 0;
-        int i;
-        for (i = 0; i < dice.length; i++)
-            if (dice[i] == 5)
-                s = s + 5;
-        return s;
+        return getSumOf(rolls, 5);
     }
 
     public int sixes() {
-        int sum = 0;
-        for (int at = 0; at < dice.length; at++)
-            if (dice[at] == 6)
-                sum = sum + 6;
-        return sum;
+        return getSumOf(rolls, 6);
+    }
+
+    private static int getSumOf(List<Integer> rolls, int number) {
+        return (int) rolls.stream().filter(roll -> roll.equals(number)).mapToLong(roll -> roll).sum();
     }
 
     public static int score_pair(int d1, int d2, int d3, int d4, int d5) {
