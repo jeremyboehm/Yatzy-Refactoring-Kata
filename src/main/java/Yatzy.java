@@ -23,15 +23,10 @@ public class Yatzy {
     }
 
     public static int ones(int d1, int d2, int d3, int d4, int d5) {
-        int sum = 0;
-        if (d1 == 1) sum++;
-        if (d2 == 1) sum++;
-        if (d3 == 1) sum++;
-        if (d4 == 1) sum++;
-        if (d5 == 1)
-            sum++;
 
-        return sum;
+        List<Integer> rolls = Arrays.asList(d1, d2, d3, d4, d5);
+
+        return (int) rolls.stream().filter(roll -> roll.equals(1)).count();
     }
 
     public static int twos(int d1, int d2, int d3, int d4, int d5) {
