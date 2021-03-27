@@ -10,15 +10,11 @@ public class Yatzy {
         this.rolls = rolls;
     }
 
-    public static int chance(List<Integer> rolls) {
-        return rolls.stream().mapToInt(roll -> roll).sum();
-    }
-
     public int chance() {
         return rolls.stream().mapToInt(roll -> roll).sum();
     }
 
-    public static int yatzy(List<Integer> rolls) {
+    public int yatzy() {
         for (int i = 0; i < rolls.size(); i++) {
             for (int k = i + 1; k < rolls.size(); k++) {
                 if (!rolls.get(i).equals(rolls.get(k))) {
