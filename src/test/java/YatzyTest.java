@@ -1,9 +1,7 @@
-import org.junit.*;
-
-import java.util.Arrays;
+import org.junit.Test;
 
 import static java.util.Arrays.asList;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class YatzyTest {
 
@@ -11,6 +9,12 @@ public class YatzyTest {
     public void chance_scores_sum_of_all_dice() {
         assertEquals(15, Yatzy.chance(asList(2,3,4,5,1)));
         assertEquals(16, Yatzy.chance(asList(3,3,4,5,1)));
+    }
+
+    @Test
+    public void chance_scores_sum_of_all_dice_2() {
+        assertEquals(15, new Yatzy(asList(2,3,4,5,1)).chance());
+        assertEquals(16, new Yatzy(asList(3,3,4,5,1)).chance());
     }
 
     @Test public void yatzy_scores_50_when_all_dices_numbers_are_the_same() {
