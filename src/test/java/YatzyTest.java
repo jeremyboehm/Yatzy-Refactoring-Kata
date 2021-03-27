@@ -9,9 +9,7 @@ public class YatzyTest {
 
     @Test
     public void chance_scores_sum_of_all_dice() {
-        int expected = 15;
-        int actual = Yatzy.chance(asList(2,3,4,5,1));
-        assertEquals(expected, actual);
+        assertEquals(15, Yatzy.chance(asList(2,3,4,5,1)));
         assertEquals(16, Yatzy.chance(asList(3,3,4,5,1)));
     }
 
