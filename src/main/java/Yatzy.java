@@ -60,9 +60,9 @@ public class Yatzy {
     }
 
     public int two_pair() {
-        List<Integer> pairs = getHighestPair2(rolls);
+        List<Integer> twoHighestPairs = getTwoHighestPairs(rolls);
 
-        return pairs.stream().mapToInt(number -> number).sum();
+        return twoHighestPairs.stream().mapToInt(number -> number).sum();
     }
 
     public static int four_of_a_kind(int _1, int _2, int d3, int d4, int d5) {
@@ -177,25 +177,13 @@ public class Yatzy {
         return Collections.emptyList();
     }
 
-    private static List<Integer> getHighestPairStatic(List<Integer> rolls) {
-
-        rolls.sort(Collections.reverseOrder());
-
-        for (int i = 0; i < rolls.size(); i++) {
-            if (rolls.get(i).equals(rolls.get(i + 1))) {
-                return asList(rolls.get(i), rolls.get(i + 1));
-            }
-        }
-        return Collections.emptyList();
-    }
-
-    private static List<Integer> getHighestPair2(List<Integer> rolls) {
+    private List<Integer> getTwoHighestPairs(List<Integer> rolls) {
         List<Integer> pairs = new ArrayList<>();
 
-        pairs.addAll(getHighestPairStatic(rolls));
+        pairs.addAll(getHighestPair(rolls));
         Integer integer = pairs.get(0);
         List<Integer> rollsUpdated = rolls.stream().filter(val -> !val.equals(integer)).collect(Collectors.toList());
-        pairs.addAll(getHighestPairStatic(rollsUpdated));
+        pairs.addAll(getHighestPair(rollsUpdated));
 
         return !pairs.isEmpty() ? pairs : Collections.emptyList();
     }
