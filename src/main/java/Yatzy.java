@@ -25,7 +25,7 @@ public class Yatzy {
         return 50;
     }
 
-    public static int ones(List<Integer> rolls) {
+    public int ones() {
         return getSumOf(rolls, 1);
     }
 
