@@ -10,13 +10,8 @@ public class Yatzy {
         return rolls.stream().mapToInt(roll -> roll).sum();
     }
 
-    public static int yatzy(int... dice)
+    public static int yatzy(List<Integer> rolls)
     {
-        List<Integer> rolls = Arrays
-                .stream(dice)
-                .boxed()
-                .collect(Collectors.toCollection(ArrayList::new));
-
         for (int i = 0; i < rolls.size(); i++) {
             for (int k = i + 1; k < rolls.size(); k++) {
                 if (!rolls.get(i).equals(rolls.get(k))) {
