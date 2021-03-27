@@ -59,9 +59,7 @@ public class Yatzy {
         return highestPair.stream().mapToInt(number -> number).sum();
     }
 
-    public static int two_pair(int d1, int d2, int d3, int d4, int d5) {
-        List<Integer> rolls = asList(d1, d2, d3, d4, d5);
-
+    public int two_pair() {
         List<Integer> pairs = getHighestPair2(rolls);
 
         return pairs.stream().mapToInt(number -> number).sum();
