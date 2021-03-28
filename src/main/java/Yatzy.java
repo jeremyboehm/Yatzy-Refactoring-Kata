@@ -14,7 +14,7 @@ public class Yatzy {
     }
 
     public int chance() {
-        return rolls.stream().mapToInt(roll -> roll).sum();
+        return calculateScore(rolls);
     }
 
     public int yatzy() {
@@ -56,13 +56,13 @@ public class Yatzy {
 
         List<Integer> highestPair = getHighestPair(rolls);
 
-        return highestPair.stream().mapToInt(number -> number).sum();
+        return calculateScore(highestPair);
     }
 
     public int two_pair() {
         List<Integer> twoHighestPairs = getTwoHighestPairs(rolls);
 
-        return twoHighestPairs.stream().mapToInt(number -> number).sum();
+        return calculateScore(twoHighestPairs);
     }
 
     public static int four_of_a_kind(int _1, int _2, int d3, int d4, int d5) {
@@ -162,6 +162,10 @@ public class Yatzy {
         return !pairs.isEmpty() ? pairs : Collections.emptyList();
     }
 
+    private int calculateScore(List<Integer> rolls) {
+        return rolls.stream().mapToInt(number -> number).sum();
+    }
+
     private int calculateStraight(int straightStarter) {
         Collections.sort(rolls);
 
@@ -173,7 +177,7 @@ public class Yatzy {
                 return 0;
             }
         }
-        return rolls.stream().mapToInt(number -> number).sum();
+        return calculateScore(rolls);
     }
 }
 
