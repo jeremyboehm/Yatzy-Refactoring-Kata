@@ -135,7 +135,7 @@ public class Yatzy {
             return 0;
     }
 
-    private static int getSumOf(List<Integer> rolls, int number) {
+    private int getSumOf(List<Integer> rolls, int number) {
         return (int) rolls.stream().filter(roll -> roll.equals(number)).mapToLong(roll -> roll).sum();
     }
 
