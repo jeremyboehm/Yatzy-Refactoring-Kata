@@ -80,15 +80,7 @@ public class Yatzy {
     }
 
     public int three_of_a_kind() {
-        int frequency;
-        for (Integer roll : rolls) {
-            frequency = Collections.frequency(rolls, roll);
-
-            if (frequency >= 3) {
-                return roll*3;
-            }
-        }
-        return 0;
+        return numberOfAKind(3);
     }
 
     public int smallStraight() {
@@ -176,6 +168,18 @@ public class Yatzy {
             }
         }
         return calculateScore(rolls);
+    }
+
+    private int numberOfAKind(int kind) {
+        int frequency;
+        for (Integer roll : rolls) {
+            frequency = Collections.frequency(rolls, roll);
+
+            if (frequency >= kind) {
+                return roll*kind;
+            }
+        }
+        return 0;
     }
 }
 
