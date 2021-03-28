@@ -94,31 +94,11 @@ public class Yatzy {
     }
 
     public int smallStraight() {
-        Collections.sort(rolls);
-
-        if (!rolls.get(0).equals(1))
-            return 0;
-
-        for (int i = 0; i < rolls.size() - 1; i++) {
-            if (!rolls.get(i + 1).equals(rolls.get(i) + 1)) {
-                return 0;
-            }
-        }
-        return 15;
+        return calculateStraight(1);
     }
 
     public int largeStraight() {
-        Collections.sort(rolls);
-
-        if (!rolls.get(0).equals(2))
-            return 0;
-
-        for (int i = 0; i < rolls.size() - 1; i++) {
-            if (!rolls.get(i + 1).equals(rolls.get(i) + 1)) {
-                return 0;
-            }
-        }
-        return 20;
+        return calculateStraight(2);
     }
 
     public static int fullHouse(int d1, int d2, int d3, int d4, int d5) {
@@ -180,6 +160,20 @@ public class Yatzy {
         pairs.addAll(getHighestPair(rollsUpdated));
 
         return !pairs.isEmpty() ? pairs : Collections.emptyList();
+    }
+
+    private int calculateStraight(int straightStarter) {
+        Collections.sort(rolls);
+
+        if (!rolls.get(0).equals(straightStarter))
+            return 0;
+
+        for (int i = 0; i < rolls.size() - 1; i++) {
+            if (!rolls.get(i + 1).equals(rolls.get(i) + 1)) {
+                return 0;
+            }
+        }
+        return rolls.stream().mapToInt(number -> number).sum();
     }
 }
 
