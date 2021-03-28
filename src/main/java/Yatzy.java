@@ -81,11 +81,9 @@ public class Yatzy {
         return calculateStraight(2);
     }
 
-    public static int fullHouse(int d1, int d2, int d3, int d4, int d5) {
-        List<Integer> rolls = asList(d1, d2, d3, d4, d5);
-
-        int twoOfAKind = numberOfAKind(rolls, 2);
-        int threeOfAKind = numberOfAKind(rolls, 3);
+    public int fullHouse() {
+        int twoOfAKind = numberOfAKind(2);
+        int threeOfAKind = numberOfAKind(3);
 
         return twoOfAKind == 0 || threeOfAKind == 0 ? 0 : twoOfAKind + threeOfAKind;
 
@@ -143,18 +141,6 @@ public class Yatzy {
 
             if (frequency >= kind) {
                 return roll*kind;
-            }
-        }
-        return 0;
-    }
-
-    private static int numberOfAKind(List<Integer> rolls, int number) {
-        int frequency;
-        for (Integer roll : rolls) {
-            frequency = Collections.frequency(rolls, roll);
-
-            if (frequency >= number) {
-                return roll*number;
             }
         }
         return 0;
