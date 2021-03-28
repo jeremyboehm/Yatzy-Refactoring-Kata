@@ -12,7 +12,7 @@ public class YatzyTest {
     }
 
     @Test
-    public void yatzy_scores_50_when_all_dices_numbers_are_the_same_2() {
+    public void yatzy_scores_50_when_all_dices_numbers_are_the_same() {
         assertEquals(50, new Yatzy(asList(4, 4, 4, 4, 4)).yatzy());
         assertEquals(50, new Yatzy(asList(6, 6, 6, 6, 6)).yatzy());
     }
