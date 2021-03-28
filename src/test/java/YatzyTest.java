@@ -99,9 +99,9 @@ public class YatzyTest {
 
     @Test
     public void largeStraight() {
-        assertEquals(20, Yatzy.largeStraight(6, 2, 3, 4, 5));
-        assertEquals(20, Yatzy.largeStraight(2, 3, 4, 5, 6));
-        assertEquals(0, Yatzy.largeStraight(1, 2, 2, 4, 5));
+        assertEquals(20, new Yatzy(asList(6, 2, 3, 4, 5)).largeStraight());
+        assertEquals(20, new Yatzy(asList(2, 3, 4, 5, 6)).largeStraight());
+        assertEquals(0, new Yatzy(asList(1, 2, 2, 4, 5)).largeStraight());
     }
 
     @Test
